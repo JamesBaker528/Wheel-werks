@@ -1,26 +1,116 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-ink: #08090a;
+  --color-carbon: #0e1012;
+  --color-graphite: #16191c;
+  --color-steel: #22262b;
+  --color-edge: #2e333a;
+  --color-mute: #8b939c;
+  --color-silver: #c9ced4;
+  --color-chrome: #eef1f4;
+  --color-signal: #e11d2a;
+  --color-signal-hi: #ff3341;
+  --color-brand-teal: #3fc7c0; /* original Wheel Werks teal, used sparingly */
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-barlow), var(--font-inter), ui-sans-serif, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-ink text-silver font-sans antialiased;
+    overflow-x: clip;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-chrome;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+  p { text-wrap: pretty; }
+  ::selection { background: var(--color-signal); color: white; }
+  :focus-visible {
+    outline: 2px solid var(--color-signal-hi);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility container-x {
+  @apply mx-auto w-full max-w-[1320px] px-5 sm:px-8 lg:px-12;
+}
+@utility eyebrow {
+  @apply inline-flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-mute;
+  &::before {
+    content: "";
+    @apply block h-px w-8 bg-signal;
+  }
+}
+@utility display {
+  @apply font-display font-bold uppercase leading-[0.92] tracking-tight;
+}
+@utility chrome-text {
+  background: linear-gradient(180deg, #ffffff 0%, #d7dce1 45%, #8e979f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@utility btn {
+  @apply relative inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-full px-6 text-sm font-semibold tracking-wide transition-all duration-300 ease-[var(--ease-out-expo)];
+}
+@utility btn-primary {
+  @apply btn bg-signal text-white shadow-[0_10px_30px_-10px_rgba(225,29,42,0.7)] hover:bg-signal-hi hover:shadow-[0_14px_40px_-10px_rgba(255,51,65,0.8)] active:scale-[0.98];
+}
+@utility btn-ghost {
+  @apply btn border border-white/20 bg-white/5 text-chrome backdrop-blur-md hover:border-white/40 hover:bg-white/10 active:scale-[0.98];
+}
+@utility panel {
+  @apply rounded-2xl border border-white/[0.07] bg-gradient-to-b from-graphite to-carbon;
+}
+@utility hairline {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+  height: 1px;
+}
+@utility field {
+  @apply w-full rounded-xl border border-edge bg-carbon px-4 py-3 text-base text-chrome placeholder:text-mute/70 transition-colors focus:border-signal;
+  &[aria-invalid="true"] { border-color: var(--color-signal-hi); }
+}
+@utility label {
+  @apply mb-1.5 block text-sm font-medium text-silver;
+}
+
+/* Hero headline entrance — CSS-only so it never delays LCP */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(0.45em); filter: blur(6px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scroll-cue { 0% { transform: translateY(-100%); } 100% { transform: translateY(200%); } }
+.rise { animation: rise 1s var(--ease-out-expo) both; }
+.fade-in { animation: fade-in 1.2s ease both; }
+.scroll-cue { animation: scroll-cue 1.8s ease-in-out infinite; }
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
