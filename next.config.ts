@@ -63,6 +63,7 @@ const legacy: [string, string][] = [
   ["/Tires/:path+", "/tires"],
   ["/shop-for-tires.aspx", "/tires"],
   ["/About/Photo-Gallery", "/gallery"],
+  ["/About/Photo-Gallery/ID/54", "/gallery#customer-rides"],
   ["/About/Photo-Gallery/:path+", "/gallery"],
   ["/About/Videos", "/gallery"],
   ["/About/Reviews", "/#reviews-title"],

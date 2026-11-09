@@ -42,7 +42,7 @@ export const reviews: Review[] = [
 ];
 
 /** Gallery: real shop photography from the existing site. Replace/add with owner photos. */
-export type GalleryItem = { src: string; alt: string; category: "Shop" | "Refinishing" | "Repair" | "Wheels" | "Tires"; w: number; h: number };
+export type GalleryItem = { src: string; alt: string; category: "Customer Rides" | "Shop" | "Refinishing" | "Repair" | "Wheels" | "Tires"; w: number; h: number };
 export const gallery: GalleryItem[] = [
   { src: "/media/shop/storefront.jpg", alt: "Wheel Werks storefront on 3900 South in Salt Lake City", category: "Shop", w: 1600, h: 1200 },
   { src: "/media/shop/powder-coated-colors.jpg", alt: "Wheels powder coated in green, orange and blue", category: "Refinishing", w: 400, h: 300 },

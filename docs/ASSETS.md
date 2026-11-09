@@ -3,6 +3,9 @@
 ## Shop photography — `public/media/shop/`
 Taken from the existing wheelwerks.net site (owned by Wheel Werks). Mostly 400px wide — **replace with new, high-resolution photos** of the shop and finished work as soon as possible. These are the only images presented as Wheel Werks work.
 
+## Customer rides — `public/media/rides/`
+All 90 photos from the "Customer Rides" album on the old site (/About/Photo-Gallery/ID/54, owned by Wheel Werks). Listed in `src/lib/rides.ts`; shown in the animated showcase on the homepage and /gallery. To add one, drop the file in that folder and append `{ src, w, h }`.
+
 ## Stock — `public/media/stock/` and `public/video/` (Pexels License: free commercial use, no attribution required)
 Used for atmosphere only; never captioned or presented as Wheel Werks work.
 

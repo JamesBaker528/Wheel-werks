@@ -8,11 +8,11 @@ import { SectionHeading } from "@/components/Section";
 import { Brands } from "@/components/Brands";
 import { Process } from "@/components/Process";
 import { Reviews } from "@/components/Reviews";
-import { Gallery } from "@/components/Gallery";
+import { RidesShowcase } from "@/components/RidesShowcase";
 import { Faq } from "@/components/Faq";
 import { Reveal, Parallax } from "@/components/Motion";
 import { site, yearsInBusiness } from "@/lib/site";
-import { beforeAfter, gallery, homeFaqs } from "@/lib/content";
+import { beforeAfter, homeFaqs } from "@/lib/content";
 import { defaultProcess } from "@/lib/services";
 
 const cards: Card[] = [
@@ -172,10 +172,10 @@ export default function Home() {
       <section aria-labelledby="gallery-title" className="py-24 sm:py-32">
         <div className="container-x">
           <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
-            <SectionHeading eyebrow="Inside the shop" title="Real work. Real shop." id="gallery-title" />
-            <Reveal><Link href="/gallery" className="btn-ghost shrink-0">Full gallery <ArrowRight className="size-4" aria-hidden /></Link></Reveal>
+            <SectionHeading eyebrow="Customer rides" title="Real cars. Real customers." id="gallery-title" />
+            <Reveal><Link href="/gallery#customer-rides" className="btn-ghost shrink-0">Full gallery <ArrowRight className="size-4" aria-hidden /></Link></Reveal>
           </div>
-          <div className="mt-14"><Gallery items={gallery.slice(0, 6)} filters={false} /></div>
+          <Reveal delay={0.1} className="mt-14"><RidesShowcase compact /></Reveal>
         </div>
       </section>
 
