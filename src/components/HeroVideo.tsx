@@ -43,6 +43,8 @@ export function HeroVideo() {
         aria-hidden
         tabIndex={-1}
       >
+        {enabled && <source src="/video/hero-720.webm" type="video/webm" media="(max-width: 900px)" />}
+        {enabled && <source src="/video/hero-720.mp4" type="video/mp4" media="(max-width: 900px)" />}
         {enabled && <source src="/video/hero.webm" type="video/webm" />}
         {enabled && <source src="/video/hero.mp4" type="video/mp4" />}
       </video>

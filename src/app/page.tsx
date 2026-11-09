@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronDown, Phone, MapPin, Clock, Wrench, Paintbrush, Gauge, Users, ShieldCheck, Warehouse } from "lucide-react";
 import { HeroVideo } from "@/components/HeroVideo";
+import { ArtImage } from "@/components/ArtImage";
 import { ServiceCards, type Card } from "@/components/ServiceCards";
 import { BeforeAfterSlider } from "@/components/BeforeAfter";
 import { SectionHeading } from "@/components/Section";
@@ -38,7 +39,7 @@ export default function Home() {
     <>
       {/* 1 — Cinematic hero */}
       <section aria-labelledby="hero-title" className="relative isolate flex min-h-[100svh] items-end overflow-hidden pb-32 pt-32 sm:items-center sm:pb-20">
-        <Image src="/video/hero-poster.jpg" alt="" fill priority sizes="100vw" className="-z-30 object-cover" />
+        <Image src="/video/hero-poster.jpg" alt="" fill priority sizes="(max-width: 767px) 300vw, 100vw" className="-z-30 object-cover" />
         <HeroVideo />
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_70%_40%,transparent_0%,rgba(8,9,10,0.55)_55%,rgba(8,9,10,0.95)_100%)]" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/30 to-ink/50" />
@@ -191,7 +192,7 @@ export default function Home() {
 
       {/* 11 — Final conversion */}
       <section aria-labelledby="final-title" className="relative isolate overflow-hidden py-24 sm:py-32">
-        <Image src="/media/stock/performance-wheel-red.jpg" alt="" fill sizes="100vw" className="-z-20 object-cover opacity-25" />
+        <div className="absolute inset-0 -z-20"><ArtImage src="/media/stock/performance-wheel-red.jpg" alt="" className="opacity-25" /></div>
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-ink via-ink/80 to-ink" />
         <div className="container-x grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
           <Reveal>

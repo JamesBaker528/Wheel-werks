@@ -27,7 +27,6 @@ export type ServicePage = {
   schemaServiceType: string;
 };
 
-const s = (src: string, alt: string): Img => ({ src: `/media/shop/${src}.jpg`, alt, kind: "shop" });
 const k = (src: string, alt: string): Img => ({ src: `/media/stock/${src}.jpg`, alt, kind: "stock" });
 
 export const defaultProcess: Step[] = [
@@ -47,7 +46,7 @@ export const services: ServicePage[] = [
     metaDescription:
       "Bent rim straightening, curb rash repair and cracked wheel welding at Wheel Werks in Salt Lake City. In-house equipment, serving the valley since 1986.",
     lede: "One replacement wheel can cost as much as a whole new set — if you can still find it. We can usually repair your damaged wheels for a fraction of that cost.",
-    heroImage: s("bent-wheel-on-machine", "Bent alloy wheel mounted on a straightening machine at Wheel Werks"),
+    heroImage: k("mechanic-wheel", "Technician inspecting an alloy wheel and tire"),
     intro: [
       "Wheel styles change every year or so and get discontinued just like vehicle models. When a wheel is bent, cracked or scraped up, replacing a single one can be expensive or impossible.",
       "Our crew straightens wheels professionally on state-of-the-art equipment, to within 5/1000 of an inch. We also weld cracked or broken wheels, then refinish them so the repair disappears.",
@@ -73,9 +72,9 @@ export const services: ServicePage[] = [
       { title: "Refinish, mount & balance", body: "We refinish to match, mount the tire and balance the assembly." },
     ],
     gallery: [
-      s("bent-wheel-on-machine", "Bent wheel being assessed on shop equipment"),
-      s("wheel-welding", "Technician welding a cracked aluminum wheel"),
-      s("wheel-repair-detail", "Wheel repair in progress at Wheel Werks"),
+      k("tig-welding-aluminum", "TIG welding torch on aluminum"),
+      k("welder-tig", "Welder in a protective helmet TIG welding"),
+      k("wheel-removal", "Mechanic removing a wheel for service"),
     ],
     faqs: [
       { q: "Can a bent rim really be straightened safely?", a: "In many cases, yes. We straighten wheels on dedicated equipment to within 5/1000 of an inch. If a wheel is too far gone, we'll tell you and help you find a replacement." },
@@ -97,7 +96,7 @@ export const services: ServicePage[] = [
     metaDescription:
       "In-house wheel powder coating, painting, polishing, machining and chrome plating in Salt Lake City. Thousands of colors, factory color matching and custom finishes.",
     lede: "Restore your wheels to the shine they had on day one — or create a look nobody else has. Powder coating, paint, polishing and machining, all done in-house.",
-    heroImage: s("powder-coated-colors", "Wheels powder coated in green, orange and blue at Wheel Werks"),
+    heroImage: k("polished-chrome-wheel", "Polished multi-spoke wheel on a red car"),
     intro: [
       "Wheel refinishing is the art of re-engineering the look of your wheels. We perform all types of refinishing, from simple painting to polishing, and we can restore wheels to factory condition or build a custom look to fit your style.",
       "Our own paint shop means we can get the color match right. We strip old coatings without damaging the wheel underneath, and we can combine premium paint with machining for a finish you won't see on every other car.",
@@ -123,10 +122,10 @@ export const services: ServicePage[] = [
       { title: "Mount & balance", body: "Tires are mounted and balanced so the wheels are ready to drive." },
     ],
     gallery: [
-      s("powder-coated-colors", "Custom powder coated wheels in several colors"),
-      s("powder-coat-booth", "Wheel being sprayed in the powder coating booth"),
-      s("custom-two-tone-wheel", "Gloss black wheel with a yellow two-tone barrel"),
-      s("refinishing-shop", "Wheel Werks refinishing shop with blasting cabinet and spray booth"),
+      k("polished-two-piece-wheel", "Polished two-piece wheel with a deep lip"),
+      k("spray-gun", "Spray gun applying a fresh finish"),
+      k("coating-booth", "Technician in protective gear inside a coating booth"),
+      k("bronze-wheel", "Bronze finished wheel on a black car"),
     ],
     faqs: [
       { q: "What colors can you powder coat wheels?", a: "Thousands of colors are available, from factory silver to bold custom shades. Bring a reference photo and we'll help you choose." },
@@ -174,9 +173,9 @@ export const services: ServicePage[] = [
       { title: "Mount, balance, install", body: "Your new set goes on balanced and ready to drive." },
     ],
     gallery: [
-      s("custom-wheel-display", "Wall of custom wheels in the Wheel Werks showroom"),
-      s("showroom-wheel-wall", "Showroom display with aftermarket wheels"),
-      s("factory-take-off-wheels", "Factory take-off wheels available at Wheel Werks"),
+      k("lime-car-mesh-wheels", "Lowered green car with polished mesh wheels"),
+      k("wheel-closeup", "Close-up of a black and machined multi-spoke wheel"),
+      k("performance-wheel-red", "Black performance wheel on a red sports car"),
     ],
     faqs: [
       { q: "Will these wheels fit my vehicle?", a: "Fitment is one of our specialties. Give us your year, make and model and we'll help you find wheels with the right size and offset." },
@@ -224,8 +223,9 @@ export const services: ServicePage[] = [
       { title: "TPMS check", body: "We make sure your tire pressure monitoring system is working." },
     ],
     gallery: [
-      s("tire-balancing", "Tire on a balancing machine at Wheel Werks"),
-      s("tire-storage-racks", "Labeled customer tires on storage racks"),
+      k("tire-changer-mechanic", "Technician mounting a tire in a service bay"),
+      k("tire-storage-warehouse", "Rows of tires stored on racks"),
+      k("tire-inflation", "Technician checking tire pressure"),
     ],
     faqs: [
       { q: "Which tire brands do you carry?", a: "We carry tires from leading brands. Call or request a quote with your size and we'll check current availability and pricing." },
@@ -249,7 +249,7 @@ export const extraServices = {
     {
       id: "road-force-balancing",
       title: "Professional Road Force Balancing",
-      img: s("tire-balancing", "Wheel and tire assembly on a balancing machine"),
+      img: k("tire-changer-mechanic", "Technician handling a tire in a service bay"),
       body: [
         "Tires that are out of balance cause vibrations at certain speeds. Road Force balancing simulates the weight of the car on the wheel and measures the high, low, stiff and soft spots of the tire, so we can refine where the tire sits on the wheel.",
         "It also measures balance front-to-back and around the circumference, minimizing vibration that a standard balance can miss.",
@@ -271,7 +271,7 @@ export const extraServices = {
     {
       id: "tire-storage",
       title: "Seasonal Tire & Wheel Storage",
-      img: s("tire-storage-racks", "Customer tires labeled and stored on racks"),
+      img: k("tire-storage-warehouse", "Rows of tires stored on racks"),
       body: [
         "Many customers store their snow tires with us during warmer months and swap them when winter arrives. Each set is labeled and inventoried and kept in a secure, controlled environment.",
         "Storage is offered at reasonable rates — call to ask about our storage program.",
@@ -281,7 +281,7 @@ export const extraServices = {
     {
       id: "blasting-stripping",
       title: "Blasting & Stripping",
-      img: s("refinishing-shop", "Blasting cabinet and spray booth in the Wheel Werks shop"),
+      img: k("coating-booth", "Technician in protective gear blasting and coating"),
       body: [
         "Need the old finish taken off your wheels? We have professional automated blasting equipment, and we chemically strip wheels too.",
       ],
@@ -290,7 +290,7 @@ export const extraServices = {
     {
       id: "factory-take-offs",
       title: "Factory Take-Off Wheels & Tires",
-      img: s("factory-take-off-wheels", "Factory take-off wheels for sale"),
+      img: k("wheel-removal", "Mechanic removing a factory wheel"),
       body: [
         "When customers upgrade, we usually take their factory wheels and/or tires in exchange toward the new set. We pass the savings on by selling those take-offs at lower than new cost.",
         "Call to see whether we have what you're looking for in stock.",
@@ -300,7 +300,7 @@ export const extraServices = {
     {
       id: "tpms-nitrogen",
       title: "TPMS Service & Nitrogen Inflation",
-      img: k("gloss-black-wheel", "Gloss black wheel and low-profile tire"),
+      img: k("tire-inflation", "Technician checking tire pressure"),
       body: [
         "During TPMS service we test the system to make sure it's working correctly. If we find damage, we may need to replace valve cores, valve nuts, seals, seal washers or caps.",
         "We also offer nitrogen inflation — refills for nitrogen-filled tires, or switching your tires over.",

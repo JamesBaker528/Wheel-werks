@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ArtImage } from "./ArtImage";
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 import { site } from "@/lib/site";
@@ -7,7 +7,7 @@ import type { ReactNode } from "react";
 export function PageHero({ eyebrow, title, lede, image, imageAlt, ctaHref = "/contact", crumbs, children }: { eyebrow: string; title: string; lede: string; image: string; imageAlt: string; ctaHref?: string; crumbs?: { name: string; href: string }[]; children?: ReactNode }) {
   return (
     <section className="relative isolate flex min-h-[78svh] items-end overflow-hidden pb-16 pt-36 sm:pb-24">
-      <Image src={image} alt={imageAlt} fill priority sizes="100vw" className="-z-20 object-cover fade-in" />
+      <div className="absolute inset-0 -z-20"><ArtImage src={image} alt={imageAlt} priority className="fade-in" /></div>
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(8,9,10,0.55)_0%,rgba(8,9,10,0.75)_55%,var(--color-ink)_100%)]" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/90 via-ink/40 to-transparent" />
       <div className="container-x">

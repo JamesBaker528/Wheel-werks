@@ -131,9 +131,10 @@ export function RidesShowcase({ compact = false }: { compact?: boolean }) {
 
         {/* Photo */}
         <AnimatePresence initial={false} custom={dir}>
-          <m.div key={index} custom={dir} variants={variants} initial="enter" animate="center" exit="exit" className="absolute inset-0 grid place-items-center p-4 sm:p-8">
+          <m.div key={index} custom={dir} variants={variants} initial="enter" animate="center" exit="exit" className="absolute inset-0 grid place-items-center justify-items-center p-4 sm:p-8">
             <m.div
               className="relative h-full w-full"
+              style={{ maxWidth: ride.w }}
               initial={{ scale: 1 }}
               animate={reduce ? undefined : { scale: 1.06 }}
               transition={{ duration: INTERVAL / 1000 + 1.2, ease: "linear" }}

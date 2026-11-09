@@ -18,7 +18,7 @@ const allItems = [
 
 export const metadata = pageMeta({
   title: "Gallery — Customer Rides, Wheel Repair & Powder Coating",
-  description: "90+ customer rides plus photos from the Wheel Werks shop in Salt Lake City: custom wheels, powder coated finishes, wheel repair, welding and our showroom.",
+  description: "75+ customer rides photographed at Wheel Werks in Salt Lake City — custom wheels, finishes and fitment on cars, trucks and SUVs — plus our shop and showroom.",
   path: "/gallery",
 });
 
@@ -29,8 +29,8 @@ export default function GalleryPage() {
         eyebrow="Gallery"
         title="Craftsmanship you can see."
         lede="Customer rides, custom colors, two-tone finishes, straightened and welded wheels — and the shop where it all happens."
-        image="/media/rides/ride-05.jpg"
-        imageAlt="Customer car with custom wheels outside Wheel Werks"
+        image="/media/stock/polished-two-piece-wheel.jpg"
+        imageAlt="Polished two-piece wheel on a red car"
         crumbs={[{ name: "Home", href: "/" }, { name: "Gallery", href: "/gallery" }]}
       />
       <section id="customer-rides" aria-labelledby="rides" className="scroll-mt-24 py-20 sm:py-28">

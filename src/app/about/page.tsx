@@ -26,8 +26,8 @@ export default function AboutPage() {
         eyebrow={`Since ${site.foundedYear}`}
         title="A lifetime in wheels & tires."
         lede={`${yearsInBusiness()} years. One location. A crew that stays. Wheel Werks is a family-owned Salt Lake City shop built by someone who has spent an entire career in this business.`}
-        image="/media/shop/storefront.jpg"
-        imageAlt="Wheel Werks shop exterior on 3900 South in Salt Lake City"
+        image="/media/stock/wheel-removal.jpg"
+        imageAlt="Technician removing a wheel for service"
         crumbs={[{ name: "Home", href: "/" }, { name: "About", href: "/about" }]}
       />
 
@@ -40,7 +40,7 @@ export default function AboutPage() {
           </SectionHeading>
           <Reveal delay={0.1}>
             <Parallax className="aspect-[4/3] rounded-2xl border border-white/[0.07]" strength={40}>
-              <Image src="/media/shop/showroom-wheel-wall.jpg" alt="Inside the Wheel Werks showroom" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
+              <Image src="/media/stock/tire-changer-mechanic.jpg" alt="Technician mounting a tire in a service bay" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
             </Parallax>
           </Reveal>
         </div>

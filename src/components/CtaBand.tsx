@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { ArtImage } from "./ArtImage";
 import { Phone, ArrowRight, MapPin } from "lucide-react";
 import { site } from "@/lib/site";
 import { Reveal } from "./Motion";
@@ -7,7 +7,7 @@ import { Reveal } from "./Motion";
 export function CtaBand({ title = "Ready when your wheels are.", body = "Send us a few photos and the details — we'll get back to you with options. Or call the shop and talk to someone who's done this for years." }: { title?: string; body?: string }) {
   return (
     <section aria-labelledby="cta-title" className="relative isolate overflow-hidden py-28 sm:py-36">
-      <Image src="/media/stock/black-wheel-red-caliper.jpg" alt="" fill sizes="100vw" className="-z-20 object-cover object-center opacity-40" />
+      <div className="absolute inset-0 -z-20"><ArtImage src="/media/stock/black-wheel-red-caliper.jpg" alt="" className="opacity-40" /></div>
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
       <div className="container-x">
         <Reveal className="max-w-2xl">

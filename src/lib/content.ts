@@ -41,22 +41,14 @@ export const reviews: Review[] = [
   },
 ];
 
-/** Gallery: real shop photography from the existing site. Replace/add with owner photos. */
+/**
+ * Gallery: real shop photography only. The old site's 400px shop photos were dropped as too low-res —
+ * add new high-resolution shop photos here as they become available.
+ */
 export type GalleryItem = { src: string; alt: string; category: "Customer Rides" | "Shop" | "Refinishing" | "Repair" | "Wheels" | "Tires"; w: number; h: number };
 export const gallery: GalleryItem[] = [
   { src: "/media/shop/storefront.jpg", alt: "Wheel Werks storefront on 3900 South in Salt Lake City", category: "Shop", w: 1600, h: 1200 },
-  { src: "/media/shop/powder-coated-colors.jpg", alt: "Wheels powder coated in green, orange and blue", category: "Refinishing", w: 400, h: 300 },
-  { src: "/media/shop/showroom-wheel-wall.jpg", alt: "Showroom wall of aftermarket wheels", category: "Wheels", w: 800, h: 600 },
-  { src: "/media/shop/bent-wheel-on-machine.jpg", alt: "Bent wheel on straightening equipment", category: "Repair", w: 400, h: 300 },
-  { src: "/media/shop/custom-two-tone-wheel.jpg", alt: "Gloss black wheel with yellow two-tone barrel", category: "Refinishing", w: 400, h: 300 },
-  { src: "/media/shop/powder-coat-booth.jpg", alt: "Wheel in the powder coating booth", category: "Refinishing", w: 326, h: 325 },
-  { src: "/media/shop/wheel-welding.jpg", alt: "Technician welding an aluminum wheel", category: "Repair", w: 400, h: 231 },
-  { src: "/media/shop/custom-wheel-display.jpg", alt: "Custom wheel display racks", category: "Wheels", w: 400, h: 300 },
-  { src: "/media/shop/refinishing-shop.jpg", alt: "Refinishing shop with blasting cabinet", category: "Refinishing", w: 400, h: 300 },
-  { src: "/media/shop/tire-storage-racks.jpg", alt: "Customer tires labeled on storage racks", category: "Tires", w: 400, h: 188 },
-  { src: "/media/shop/tire-balancing.jpg", alt: "Tire on balancing machine", category: "Tires", w: 262, h: 300 },
-  { src: "/media/shop/wheel-repair-detail.jpg", alt: "Wheel repair in progress", category: "Repair", w: 400, h: 167 },
-  { src: "/media/shop/factory-take-off-wheels.jpg", alt: "Factory take-off wheels in the shop", category: "Wheels", w: 400, h: 300 },
+  { src: "/media/shop/showroom-wheel-wall.jpg", alt: "Showroom wall of aftermarket wheels at Wheel Werks", category: "Shop", w: 800, h: 600 },
 ];
 
 /**

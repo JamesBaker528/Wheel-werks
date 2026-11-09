@@ -1,5 +1,6 @@
 /**
- * "Customer Rides" album from the original wheelwerks.net photo gallery (90 photos, owned by Wheel Werks).
+ * "Customer Rides" album from the original wheelwerks.net photo gallery (owned by Wheel Werks).
+ * The 14 lowest-resolution photos (480×270 video stills) were removed for quality.
  * To add a ride: drop the image in public/media/rides/ and append an entry with its true width/height.
  */
 export type Ride = { src: string; w: number; h: number };
@@ -74,27 +75,13 @@ export const rides: Ride[] = [
   { src: "/media/rides/ride-67.jpg", w: 665, h: 374 },
   { src: "/media/rides/ride-68.jpg", w: 665, h: 374 },
   { src: "/media/rides/ride-69.jpg", w: 665, h: 374 },
-  { src: "/media/rides/ride-70.jpg", w: 480, h: 270 },
   { src: "/media/rides/ride-71.jpg", w: 665, h: 374 },
   { src: "/media/rides/ride-72.jpg", w: 665, h: 374 },
   { src: "/media/rides/ride-73.jpg", w: 665, h: 374 },
   { src: "/media/rides/ride-74.jpg", w: 665, h: 374 },
-  { src: "/media/rides/ride-75.jpg", w: 480, h: 270 },
-  { src: "/media/rides/ride-76.jpg", w: 480, h: 270 },
-  { src: "/media/rides/ride-77.jpg", w: 480, h: 270 },
   { src: "/media/rides/ride-78.jpg", w: 665, h: 374 },
-  { src: "/media/rides/ride-79.jpg", w: 480, h: 270 },
-  { src: "/media/rides/ride-80.jpg", w: 480, h: 270 },
-  { src: "/media/rides/ride-81.jpg", w: 480, h: 270 },
-  { src: "/media/rides/ride-82.jpg", w: 480, h: 270 },
-  { src: "/media/rides/ride-83.jpg", w: 480, h: 270 },
-  { src: "/media/rides/ride-84.jpg", w: 480, h: 270 },
-  { src: "/media/rides/ride-85.jpg", w: 480, h: 270 },
-  { src: "/media/rides/ride-86.jpg", w: 480, h: 270 },
   { src: "/media/rides/ride-87.jpg", w: 665, h: 374 },
   { src: "/media/rides/ride-88.jpg", w: 665, h: 374 },
-  { src: "/media/rides/ride-89.jpg", w: 480, h: 270 },
-  { src: "/media/rides/ride-90.jpg", w: 480, h: 270 },
 ];
 
 export const rideAlt = (i: number) => `Wheel Werks customer ride — photo ${i + 1} of ${rides.length}`;

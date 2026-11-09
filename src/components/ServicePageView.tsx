@@ -13,9 +13,7 @@ import { Gallery } from "./Gallery";
 import { JsonLd } from "./JsonLd";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import type { ReactNode } from "react";
-import { gallery as allGallery } from "@/lib/content";
-
-const dims = (src: string) => allGallery.find((g) => g.src === src) ?? { w: 400, h: 300 };
+import { sizeOf } from "@/lib/media";
 
 export const slugify = (s: string) => s.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
@@ -50,7 +48,7 @@ export function ServicePageView({ page, extra }: { page: ServicePage; extra?: Re
           </div>
           <Reveal delay={0.1}>
             <Parallax className="aspect-[4/5] rounded-2xl border border-white/[0.07] sm:aspect-[4/3] lg:aspect-[4/5]" strength={50}>
-              <Image src={page.gallery[0].src} alt={page.gallery[0].alt} fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
+              <Image src={page.gallery[0].src} alt={page.gallery[0].alt} fill quality={80} sizes={sizeOf(page.gallery[0].src).w > sizeOf(page.gallery[0].src).h ? "(min-width:1024px) 80vw, 160vw" : "(min-width:1024px) 50vw, 100vw"} className="object-cover" />
             </Parallax>
             {page.gallery[0].kind === "shop" && <p className="mt-3 text-xs text-mute">Photo from the Wheel Werks shop.</p>}
           </Reveal>
@@ -87,8 +85,8 @@ export function ServicePageView({ page, extra }: { page: ServicePage; extra?: Re
       {page.gallery.length > 1 && (
         <section aria-labelledby="examples" className="bg-carbon py-20 sm:py-28">
           <div className="container-x">
-            <SectionHeading eyebrow="From the shop" title="Examples" id="examples" />
-            <div className="mt-12"><Gallery items={page.gallery.map((g) => ({ src: g.src, alt: g.alt, category: "Shop", w: dims(g.src).w, h: dims(g.src).h }))} filters={false} /></div>
+            <SectionHeading eyebrow="In detail" title="The craft up close" id="examples" />
+            <div className="mt-12"><Gallery items={page.gallery.map((g) => ({ src: g.src, alt: g.alt, category: "Shop", w: sizeOf(g.src).w, h: sizeOf(g.src).h }))} filters={false} /></div>
           </div>
         </section>
       )}
