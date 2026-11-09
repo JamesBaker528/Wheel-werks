@@ -1,6 +1,7 @@
 import { ServicePageView, servicePage } from "@/components/ServicePageView";
 import { SectionHeading } from "@/components/Section";
 import { Brands } from "@/components/Brands";
+import { EbayCta } from "@/components/EbayCta";
 import { pageMeta } from "@/lib/seo";
 
 const page = servicePage("custom-wheels");
@@ -15,6 +16,7 @@ export default function Page() {
           <div className="container-x">
             <SectionHeading eyebrow="Brands" title="Wheels & tires we work with" id="brands-title" />
             <div className="mt-14"><Brands /></div>
+            <div className="mt-12"><EbayCta /></div>
           </div>
         </section>
       }

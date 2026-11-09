@@ -10,6 +10,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { extraServices, services } from "@/lib/services";
 import { pageMeta } from "@/lib/seo";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
+import { EbayCta } from "@/components/EbayCta";
 
 export const metadata = pageMeta({ title: extraServices.metaTitle, description: extraServices.metaDescription, path: "/services", image: "/og/services.jpg" });
 
@@ -52,7 +53,10 @@ export default function ServicesPage() {
                     <ul className="mt-3 space-y-2">{item.bullets.map((b) => <li key={b} className="flex gap-3 text-chrome"><Check className="mt-1 size-4 shrink-0 text-signal" aria-hidden />{b}</li>)}</ul>
                   </div>
                 )}
-                <Link href={`/contact?service=${item.quote}`} className="btn-primary mt-8">Request a Quote <ArrowRight className="size-4" aria-hidden /></Link>
+                <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+                  <Link href={`/contact?service=${item.quote}`} className="btn-primary">Request a Quote <ArrowRight className="size-4" aria-hidden /></Link>
+                  {item.id === "factory-take-offs" && <EbayCta compact />}
+                </div>
               </Reveal>
             </div>
           </section>

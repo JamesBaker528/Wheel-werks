@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Menu, Phone, X, ArrowRight } from "lucide-react";
+import { Menu, Phone, X, ArrowRight, ShoppingBag } from "lucide-react";
 import { nav, site } from "@/lib/site";
 import { Wordmark } from "./Wordmark";
 
@@ -104,6 +104,9 @@ export function Header() {
             <Link href="/contact" className="btn-primary">Request a Quote</Link>
             <a href={site.phoneHref} className="btn-ghost"><Phone className="size-4" aria-hidden /> Call {site.phone}</a>
           </div>
+          <a href={site.links.ebay} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-chrome">
+            <ShoppingBag className="size-4 text-signal" aria-hidden /> Shop our eBay store
+          </a>
           <p className="mt-6 text-sm text-mute">Mon–Fri 8–6 · Sat 9–3 · {site.address.street}</p>
         </nav>
       </div>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, ShoppingBag, ArrowUpRight } from "lucide-react";
 import { nav, site } from "@/lib/site";
 import { Wordmark } from "./Wordmark";
 import { FacebookIcon, InstagramIcon, YelpIcon } from "./SocialIcons";
@@ -19,6 +19,7 @@ export function Footer() {
               { href: site.links.facebook, label: "Wheel Werks on Facebook", Icon: FacebookIcon },
               { href: site.links.instagram, label: "Wheel Werks on Instagram", Icon: InstagramIcon },
               { href: site.links.yelp, label: "Wheel Werks on Yelp", Icon: YelpIcon },
+              { href: site.links.ebay, label: "Wheel Werks on eBay", Icon: ShoppingBag },
             ].map(({ href, label, Icon }) => (
               <a key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="grid size-11 place-items-center rounded-full border border-white/10 text-silver transition-colors hover:border-signal hover:text-white">
                 <Icon className="size-4" />
@@ -34,6 +35,7 @@ export function Footer() {
               <li key={n.href}><Link href={n.href} className="text-silver transition-colors hover:text-white">{n.label}</Link></li>
             ))}
             <li><Link href="/contact" className="text-silver transition-colors hover:text-white">Contact & Quote</Link></li>
+            <li><a href={site.links.ebay} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-silver transition-colors hover:text-white">Our eBay Store <ArrowUpRight className="size-3.5" aria-hidden /></a></li>
           </ul>
         </nav>
 

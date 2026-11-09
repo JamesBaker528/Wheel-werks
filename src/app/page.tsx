@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronDown, Phone, MapPin, Clock, Wrench, Paintbrush, Gauge, Users, ShieldCheck, Warehouse } from "lucide-react";
 import { HeroVideo } from "@/components/HeroVideo";
+import { EbayCta } from "@/components/EbayCta";
 import { ArtImage } from "@/components/ArtImage";
 import { ServiceCards, type Card } from "@/components/ServiceCards";
 import { BeforeAfterSlider } from "@/components/BeforeAfter";
@@ -151,6 +152,7 @@ export default function Home() {
             <p>We carry leading tire brands and a wide range of aftermarket wheels. Tell us your vehicle and we&rsquo;ll check what&rsquo;s available.</p>
           </SectionHeading>
           <div className="mt-14"><Brands compact /></div>
+          <Reveal className="mt-12"><EbayCta /></Reveal>
         </div>
       </section>
 

@@ -33,7 +33,7 @@ export function localBusinessSchema() {
       closes: h.closes,
     })),
     areaServed: site.serviceAreas.map((a) => ({ "@type": "Place", name: `${a}, UT` })),
-    sameAs: [site.links.facebook, site.links.instagram, site.links.yelp],
+    sameAs: [site.links.facebook, site.links.instagram, site.links.yelp, site.links.ebay],
     description: `Wheel and tire specialists in Salt Lake City since ${site.foundedYear}. ${fullAddress}.`,
   };
 }
