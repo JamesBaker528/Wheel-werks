@@ -44,6 +44,7 @@ export default function Home() {
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_70%_40%,transparent_0%,rgba(8,9,10,0.55)_55%,rgba(8,9,10,0.95)_100%)]" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/30 to-ink/50" />
         <div className="grain absolute inset-0 -z-10" />
+        <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-[radial-gradient(60%_100%_at_30%_100%,rgba(20,207,207,0.16),transparent_70%)]" />
         <div className="container-x">
           <p className="eyebrow rise">Salt Lake City · Since {site.foundedYear}</p>
           <h1 id="hero-title" className="display mt-6 text-[clamp(3.2rem,11vw,9.5rem)]">
@@ -67,7 +68,7 @@ export default function Home() {
       </section>
 
       {/* 2 — Credibility */}
-      <section id="credibility" aria-labelledby="cred-title" className="relative border-y border-white/[0.06] bg-carbon py-20 sm:py-28">
+      <section id="credibility" aria-labelledby="cred-title" className="teal-glow relative border-y border-white/[0.06] bg-carbon py-20 sm:py-28">
         <div className="container-x grid items-center gap-14 lg:grid-cols-[1fr_1.1fr]">
           <div>
             <SectionHeading eyebrow="Trusted local specialists" title={<>The valley&rsquo;s wheel &amp; tire <span className="text-signal">specialists</span></>} id="cred-title">
@@ -194,6 +195,7 @@ export default function Home() {
       <section aria-labelledby="final-title" className="relative isolate overflow-hidden py-24 sm:py-32">
         <div className="absolute inset-0 -z-20"><ArtImage src="/media/stock/performance-wheel-red.jpg" alt="" className="opacity-25" /></div>
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-ink via-ink/80 to-ink" />
+        <div className="teal-glow absolute inset-0 -z-10" />
         <div className="container-x grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
           <Reveal>
             <p className="eyebrow">Let&rsquo;s get started</p>
@@ -206,7 +208,7 @@ export default function Home() {
           </Reveal>
           <Reveal delay={0.1} className="panel p-8">
             <ul className="space-y-6">
-              <li className="flex gap-4"><MapPin className="mt-1 size-5 shrink-0 text-signal" aria-hidden /><div><p className="font-semibold text-chrome">{site.address.street}</p><p>{site.address.city}, {site.address.region} {site.address.postalCode}</p><p className="text-sm text-mute">{site.address.landmark}</p><a href={site.links.directions} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-chrome hover:text-signal-hi">Get directions <ArrowRight className="size-3.5" aria-hidden /></a></div></li>
+              <li className="flex gap-4"><MapPin className="mt-1 size-5 shrink-0 text-signal" aria-hidden /><div><p className="font-semibold text-chrome">{site.address.street}</p><p>{site.address.city}, {site.address.region} {site.address.postalCode}</p><p className="text-sm text-mute">{site.address.landmark}</p><p className="mt-1 text-sm font-semibold text-signal">Look for the teal building.</p><a href={site.links.directions} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-chrome hover:text-signal-hi">Get directions <ArrowRight className="size-3.5" aria-hidden /></a></div></li>
               <li className="flex gap-4"><Clock className="mt-1 size-5 shrink-0 text-signal" aria-hidden /><div>{site.hours.map((h) => <p key={h.days}><span className="text-chrome">{h.short}</span> {h.open} – {h.close}</p>)}<p className="text-mute">Sun Closed</p></div></li>
               <li className="flex gap-4"><Phone className="mt-1 size-5 shrink-0 text-signal" aria-hidden /><a href={site.phoneHref} className="font-display text-3xl font-bold text-chrome hover:text-signal-hi">{site.phone}</a></li>
             </ul>

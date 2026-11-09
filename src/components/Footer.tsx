@@ -6,10 +6,11 @@ import { FacebookIcon, InstagramIcon, YelpIcon } from "./SocialIcons";
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/[0.06] bg-carbon pb-28 pt-20 md:pb-12">
+    <footer className="teal-glow relative bg-carbon pb-28 pt-20 md:pb-12">
+      <div aria-hidden className="teal-rule absolute inset-x-0 top-0" />
       <div className="container-x grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
-          <Wordmark />
+          <Wordmark size="lg" />
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-mute">
             Wheel and tire specialists serving the Salt Lake Valley since {site.foundedYear}. Repair, refinishing, custom wheels and tires — all in-house.
           </p>

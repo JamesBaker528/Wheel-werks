@@ -29,7 +29,7 @@ export function Reviews() {
         {platforms.map(({ name, label, href, Icon }) => (
           <a key={name} href={href} target="_blank" rel="noopener noreferrer" className="panel group flex items-center justify-between gap-4 p-6 transition-colors hover:border-white/20">
             <span className="flex items-center gap-4">
-              <span className="grid size-12 place-items-center rounded-full bg-white/5 text-chrome group-hover:bg-signal"><Icon className="size-5" aria-hidden /></span>
+              <span className="grid size-12 place-items-center rounded-full bg-white/5 text-chrome group-hover:bg-signal group-hover:text-ink"><Icon className="size-5" aria-hidden /></span>
               <span><span className="block font-display text-xl font-semibold uppercase text-chrome">{name}</span><span className="text-sm text-mute">{label}</span></span>
             </span>
             <ExternalLink className="size-4 text-mute group-hover:text-white" aria-hidden />

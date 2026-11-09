@@ -184,7 +184,7 @@ export function QuoteForm() {
     );
   }
 
-  const err = (k: string) => errors[k] ? <p id={`${k}-err`} className="mt-2 flex items-center gap-1.5 text-sm text-signal-hi"><AlertTriangle className="size-3.5" aria-hidden />{errors[k]}</p> : null;
+  const err = (k: string) => errors[k] ? <p id={`${k}-err`} className="mt-2 flex items-center gap-1.5 text-sm text-alert"><AlertTriangle className="size-3.5" aria-hidden />{errors[k]}</p> : null;
   const aria = (k: string) => ({ "aria-invalid": errors[k] ? true : undefined, "aria-describedby": errors[k] ? `${k}-err` : undefined });
 
   const Text = ({ k, label, placeholder, type = "text", auto, mode, optional }: { k: string; label: string; placeholder?: string; type?: string; auto?: string; mode?: React.HTMLAttributes<HTMLInputElement>["inputMode"]; optional?: boolean }) => (
@@ -257,7 +257,7 @@ export function QuoteForm() {
                       return (
                         <label key={s.id} className={`flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border px-4 transition-all has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-signal-hi ${on ? "border-signal bg-signal/10 text-chrome" : "border-edge bg-carbon text-silver hover:border-white/30"}`}>
                           <input type="checkbox" name="services" value={s.id} checked={on} onChange={() => toggle("services", s.id)} className="sr-only" />
-                          <span className={`grid size-5 shrink-0 place-items-center rounded-md border ${on ? "border-signal bg-signal" : "border-white/25"}`}>{on && <Check className="size-3.5 text-white" aria-hidden />}</span>
+                          <span className={`grid size-5 shrink-0 place-items-center rounded-md border ${on ? "border-signal bg-signal" : "border-white/25"}`}>{on && <Check className="size-3.5 text-ink" aria-hidden />}</span>
                           <span className="font-medium">{s.label}</span>
                         </label>
                       );
@@ -348,7 +348,7 @@ export function QuoteForm() {
                       </label>
                     )}
                   </div>
-                  <p aria-live="polite" className="text-sm text-signal-hi">{photoMsg}</p>
+                  <p aria-live="polite" className="text-sm text-alert">{photoMsg}</p>
                 </Group>
               </>
             )}
@@ -380,7 +380,7 @@ export function QuoteForm() {
 
         <div aria-live="assertive" className="mt-6 empty:hidden">
           {status === "error" && serverMsg && (
-            <p className="flex items-start gap-2 rounded-xl border border-signal/40 bg-signal/10 p-4 text-sm text-chrome"><AlertTriangle className="mt-0.5 size-4 shrink-0 text-signal" aria-hidden />{serverMsg}</p>
+            <p className="flex items-start gap-2 rounded-xl border border-alert/40 bg-alert/10 p-4 text-sm text-chrome"><AlertTriangle className="mt-0.5 size-4 shrink-0 text-alert" aria-hidden />{serverMsg}</p>
           )}
         </div>
 

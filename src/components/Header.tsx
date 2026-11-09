@@ -38,7 +38,7 @@ export function Header() {
     >
       <div className="container-x flex h-[72px] items-center justify-between gap-6">
         <Link href="/" className="shrink-0">
-          <Wordmark />
+          <Wordmark priority />
         </Link>
 
         <nav aria-label="Main" className="hidden xl:block">

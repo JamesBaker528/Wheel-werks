@@ -9,9 +9,13 @@
   --color-mute: #8b939c;
   --color-silver: #c9ced4;
   --color-chrome: #eef1f4;
-  --color-signal: #e11d2a;
-  --color-signal-hi: #ff3341;
-  --color-brand-teal: #3fc7c0; /* original Wheel Werks teal, used sparingly */
+  /* Brand accent: the teal from the Wheel Werks storefront (#14cfcf) and logo lettering (#84d2d2). */
+  --color-signal: #14cfcf;
+  --color-signal-hi: #6fe6e3;
+  --color-signal-deep: #0b7f80;
+  --color-logo-teal: #84d2d2;
+  /* Red is reserved for errors and warnings. */
+  --color-alert: #ff4d5a;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-barlow), var(--font-inter), ui-sans-serif, sans-serif;
@@ -35,7 +39,7 @@
     text-wrap: balance;
   }
   p { text-wrap: pretty; }
-  ::selection { background: var(--color-signal); color: white; }
+  ::selection { background: var(--color-signal); color: var(--color-ink); }
   :focus-visible {
     outline: 2px solid var(--color-signal-hi);
     outline-offset: 3px;
@@ -66,7 +70,7 @@
   @apply relative inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-full px-6 text-sm font-semibold tracking-wide transition-all duration-300 ease-[var(--ease-out-expo)];
 }
 @utility btn-primary {
-  @apply btn bg-signal text-white shadow-[0_10px_30px_-10px_rgba(225,29,42,0.7)] hover:bg-signal-hi hover:shadow-[0_14px_40px_-10px_rgba(255,51,65,0.8)] active:scale-[0.98];
+  @apply btn bg-gradient-to-b from-signal-hi to-signal text-ink shadow-[0_10px_30px_-10px_rgba(20,207,207,0.6)] hover:from-white hover:to-signal-hi hover:shadow-[0_14px_40px_-10px_rgba(111,230,227,0.75)] active:scale-[0.98];
 }
 @utility btn-ghost {
   @apply btn border border-white/20 bg-white/5 text-chrome backdrop-blur-md hover:border-white/40 hover:bg-white/10 active:scale-[0.98];
@@ -74,13 +78,21 @@
 @utility panel {
   @apply rounded-2xl border border-white/[0.07] bg-gradient-to-b from-graphite to-carbon;
 }
+@utility teal-glow {
+  background-image: radial-gradient(60% 80% at 85% 0%, rgba(20, 207, 207, 0.12), transparent 70%),
+    radial-gradient(50% 70% at 0% 100%, rgba(20, 207, 207, 0.07), transparent 70%);
+}
+@utility teal-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(20, 207, 207, 0.65), transparent);
+}
 @utility hairline {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
   height: 1px;
 }
 @utility field {
   @apply w-full rounded-xl border border-edge bg-carbon px-4 py-3 text-base text-chrome placeholder:text-mute/70 transition-colors focus:border-signal;
-  &[aria-invalid="true"] { border-color: var(--color-signal-hi); }
+  &[aria-invalid="true"] { border-color: var(--color-alert); }
 }
 @utility label {
   @apply mb-1.5 block text-sm font-medium text-silver;

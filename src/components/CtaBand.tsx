@@ -9,6 +9,7 @@ export function CtaBand({ title = "Ready when your wheels are.", body = "Send us
     <section aria-labelledby="cta-title" className="relative isolate overflow-hidden py-28 sm:py-36">
       <div className="absolute inset-0 -z-20"><ArtImage src="/media/stock/black-wheel-red-caliper.jpg" alt="" className="opacity-40" /></div>
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
+      <div className="teal-glow absolute inset-0 -z-10" />
       <div className="container-x">
         <Reveal className="max-w-2xl">
           <p className="eyebrow">Request a quote</p>

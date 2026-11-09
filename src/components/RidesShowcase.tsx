@@ -152,13 +152,13 @@ export function RidesShowcase({ compact = false }: { compact?: boolean }) {
           </m.div>
         </AnimatePresence>
 
-        {/* Red light sweep riding the wipe edge */}
+        {/* Teal light sweep riding the wipe edge */}
         {!reduce && (
           <m.div
             key={`sweep-${index}`}
             aria-hidden
             className="pointer-events-none absolute inset-y-0 z-10 w-[18%]"
-            style={{ background: "linear-gradient(90deg, transparent, rgba(225,29,42,0.55) 45%, rgba(255,255,255,0.65) 50%, rgba(225,29,42,0.55) 55%, transparent)", mixBlendMode: "screen" }}
+            style={{ background: "linear-gradient(90deg, transparent, rgba(20,207,207,0.5) 45%, rgba(255,255,255,0.7) 50%, rgba(20,207,207,0.5) 55%, transparent)", mixBlendMode: "screen" }}
             initial={{ left: dir > 0 ? "100%" : "-18%", opacity: index === 0 && !userNav ? 0 : 1 }}
             animate={{ left: dir > 0 ? "-18%" : "100%", opacity: [1, 1, 0] }}
             transition={{ duration: 1.05, ease }}
@@ -175,8 +175,8 @@ export function RidesShowcase({ compact = false }: { compact?: boolean }) {
 
         <div className="absolute inset-x-0 bottom-0 z-20 flex items-center justify-between gap-3 bg-gradient-to-t from-black/70 to-transparent p-4 sm:p-6">
           <div className="flex gap-2">
-            <button type="button" onClick={prev} aria-label="Previous photo" className="grid size-11 place-items-center rounded-full border border-white/20 bg-black/50 text-chrome backdrop-blur-md transition-colors hover:border-signal hover:bg-signal"><ChevronLeft className="size-5" /></button>
-            <button type="button" onClick={() => next()} aria-label="Next photo" className="grid size-11 place-items-center rounded-full border border-white/20 bg-black/50 text-chrome backdrop-blur-md transition-colors hover:border-signal hover:bg-signal"><ChevronRight className="size-5" /></button>
+            <button type="button" onClick={prev} aria-label="Previous photo" className="grid size-11 place-items-center rounded-full border border-white/20 bg-black/50 text-chrome backdrop-blur-md transition-colors hover:border-signal hover:bg-signal hover:text-ink"><ChevronLeft className="size-5" /></button>
+            <button type="button" onClick={() => next()} aria-label="Next photo" className="grid size-11 place-items-center rounded-full border border-white/20 bg-black/50 text-chrome backdrop-blur-md transition-colors hover:border-signal hover:bg-signal hover:text-ink"><ChevronRight className="size-5" /></button>
           </div>
           {!reduce && (
             <button type="button" onClick={() => setPlaying((p) => !p)} aria-label={playing ? "Pause slideshow" : "Play slideshow"} className="grid size-11 place-items-center rounded-full border border-white/20 bg-black/50 text-chrome backdrop-blur-md hover:bg-black/70">

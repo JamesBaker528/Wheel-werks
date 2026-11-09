@@ -16,7 +16,7 @@ export default function ContactPage() {
   return (
     <>
       <section className="relative overflow-hidden pb-20 pt-32 sm:pt-40">
-        <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[520px] bg-[radial-gradient(ellipse_at_top,rgba(225,29,42,0.16),transparent_60%)]" />
+        <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[520px] bg-[radial-gradient(ellipse_at_top,rgba(20,207,207,0.14),transparent_60%)]" />
         <div className="container-x">
           <p className="eyebrow rise">Contact &amp; quote</p>
           <h1 className="display rise mt-6 max-w-4xl text-5xl sm:text-7xl" style={{ animationDelay: "100ms" }}>Let&rsquo;s look at your wheels.</h1>
@@ -29,19 +29,19 @@ export default function ContactPage() {
 
             <aside className="grid gap-5 self-start lg:sticky lg:top-28">
               <a href={site.phoneHref} className="panel group flex items-center gap-4 p-6 hover:border-signal/50">
-                <span className="grid size-12 place-items-center rounded-full bg-signal text-white"><Phone className="size-5" aria-hidden /></span>
+                <span className="grid size-12 place-items-center rounded-full bg-signal text-ink"><Phone className="size-5" aria-hidden /></span>
                 <span><span className="block text-xs uppercase tracking-[0.2em] text-mute">Call the shop</span><span className="font-display text-3xl font-bold text-chrome">{site.phone}</span></span>
               </a>
               <div className="panel p-6">
                 <ul className="space-y-5 text-sm">
-                  <li className="flex gap-3"><MapPin className="mt-0.5 size-5 shrink-0 text-signal" aria-hidden /><address className="not-italic"><span className="text-chrome">{site.name}</span><br />{site.address.street}<br />{site.address.city}, {site.address.region} {site.address.postalCode}<br /><span className="text-mute">{site.address.landmark}</span></address></li>
+                  <li className="flex gap-3"><MapPin className="mt-0.5 size-5 shrink-0 text-signal" aria-hidden /><address className="not-italic"><span className="text-chrome">{site.name}</span><br />{site.address.street}<br />{site.address.city}, {site.address.region} {site.address.postalCode}<br /><span className="text-mute">{site.address.landmark}</span><br /><span className="font-semibold text-signal">Look for the teal building.</span></address></li>
                   <li className="flex gap-3"><Clock className="mt-0.5 size-5 shrink-0 text-signal" aria-hidden /><div>{site.hours.map((h) => <p key={h.days}><span className="text-chrome">{h.days}:</span> {h.open} – {h.close}</p>)}<p>Sunday: Closed</p></div></li>
                   <li className="flex gap-3"><Mail className="mt-0.5 size-5 shrink-0 text-signal" aria-hidden /><a href={`mailto:${site.email}`} className="break-all hover:text-white">{site.email}</a></li>
                   <li className="flex gap-3"><Printer className="mt-0.5 size-5 shrink-0 text-signal" aria-hidden /><span>Fax {site.fax}</span></li>
                 </ul>
                 <a href={site.links.directions} target="_blank" rel="noopener noreferrer" className="btn-ghost mt-6 w-full"><Navigation className="size-4" aria-hidden /> Get directions</a>
               </div>
-              <a href={site.links.googleBusiness} target="_blank" rel="noopener noreferrer" className="panel block overflow-hidden" aria-label="Open Wheel Werks on Google Maps">
+              <a href={site.links.googleBusiness} target="_blank" rel="noopener noreferrer" className="panel block overflow-hidden">
                 <div className="relative grid aspect-[16/10] place-items-center bg-[linear-gradient(135deg,#16191c,#0e1012)]">
                   <div aria-hidden className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:28px_28px]" />
                   <div className="relative text-center"><MapPin className="mx-auto size-10 text-signal" aria-hidden /><p className="mt-2 font-display text-xl font-semibold uppercase text-chrome">View on Google Maps</p><p className="text-xs text-mute">3900 South &amp; State Street</p></div>

@@ -45,7 +45,7 @@ function CardItem({ c }: { c: Card }) {
         style={{ background: "radial-gradient(420px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.12), transparent 45%)" }}
       />
       <span className="absolute left-6 top-6 rounded-full border border-white/15 bg-black/40 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-silver backdrop-blur-md sm:left-7 sm:top-7">{c.tag}</span>
-      <span className="absolute right-6 top-6 grid size-11 place-items-center rounded-full bg-white/10 text-chrome backdrop-blur-md transition-all duration-500 group-hover:rotate-45 group-hover:bg-signal sm:right-7 sm:top-7">
+      <span className="absolute right-6 top-6 grid size-11 place-items-center rounded-full bg-white/10 text-chrome backdrop-blur-md transition-all duration-500 group-hover:rotate-45 group-hover:bg-signal group-hover:text-ink sm:right-7 sm:top-7">
         <ArrowUpRight className="size-5" aria-hidden />
       </span>
       <div className="relative">

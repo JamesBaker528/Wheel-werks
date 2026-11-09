@@ -46,7 +46,7 @@ Wheel repair (straightening to within 5/1000"), welding cracked/broken wheels, c
 6. Reviews: which reviews may be quoted; Google review link/Place ID. Only one public quote is used (Yellow Pages, anonymous).
 7. Before/after photos — the slider shows a clearly labeled demo until real pairs are added.
 8. Shop video footage for the hero (currently licensed stock, not shop footage).
-9. Vector logo (current PNG is 356px, made for light backgrounds; header uses a typographic mark).
-10. Brand color: the real brand uses **teal** (storefront/logo). The design follows the requested red accent; switching is one token (`--color-signal` in `globals.css`).
+9. Vector logo — the original 356px PNG is used in the header/footer; a vector or larger file would sharpen it on big screens.
+10. ~~Brand color~~ Done: the site now uses the storefront teal (`#14cfcf`, token `--color-signal` in `globals.css`) and the original logo. Red is reserved for error messages.
 11. Jobs page (old /Contact-Us/Jobs currently redirects to /contact) and the eBay store link.
 12. Privacy policy, terms, data retention — legal review required.

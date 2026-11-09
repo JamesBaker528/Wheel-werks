@@ -106,7 +106,7 @@ function Compare({ item }: { item: Pair & { demo?: boolean } }) {
         </div>
 
         <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-black/60 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-chrome backdrop-blur-md">Before</span>
-        <span className="pointer-events-none absolute right-4 top-4 rounded-full bg-signal px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white">After</span>
+        <span className="pointer-events-none absolute right-4 top-4 rounded-full bg-signal px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-ink">After</span>
 
         {item.demo && (
           <span className="pointer-events-none absolute bottom-4 left-4 right-20 w-fit rounded-xl border border-white/15 bg-black/70 px-4 py-2 text-xs text-silver backdrop-blur-md">
