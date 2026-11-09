@@ -21,7 +21,8 @@ const csp = [
 
 const securityHeaders = [
   { key: "Content-Security-Policy", value: csp },
-  { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+  // No includeSubDomains/preload: those commit every wheelwerks.net subdomain to HTTPS and are hard to undo.
+  { key: "Strict-Transport-Security", value: "max-age=63072000" },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "DENY" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
@@ -67,13 +68,20 @@ const legacy: [string, string][] = [
   ["/About/Photo-Gallery/:path+", "/gallery"],
   ["/About/Videos", "/gallery"],
   ["/About/Reviews", "/#reviews-title"],
-  ["/About/News", "/about"],
-  ["/About/News/:path+", "/about"],
+  // Old blog posts: send each to the most relevant page (first match wins), the rest to home.
+  ["/About/News/ArticleID/:id/:slug(.*(?:Store-Your-Winter-Tires|Tires-Sit-Too-Long).*)", "/services#tire-storage"],
+  ["/About/News/ArticleID/:id/:slug(.*(?:Nitrogen|Tire-Pressure).*)", "/services#tpms-nitrogen"],
+  ["/About/News/ArticleID/:id/:slug(.*Tire.*)", "/tires"],
+  ["/About/News", "/"],
+  ["/About/News/:path+", "/"],
   ["/Contact-Us", "/contact"],
   ["/Contact-Us/Find-Us", "/contact"],
   ["/Contact-Us/Jobs", "/contact"], // VERIFY: owner may want a careers page
   ["/Contact/Find-Us", "/contact"],
   ["/sitemap.aspx", "/sitemap.xml"],
+  ["/Coupons", "/contact"],
+  ["/Services/Schedule-Service-Response", "/contact"],
+  ["/Contact-Us/Find-Us/Contact-Us-Response", "/contact"],
 ];
 
 const nextConfig: NextConfig = {
@@ -84,11 +92,17 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 30,
   },
   async redirects() {
-    return legacy.map(([source, destination]) => ({ source, destination, permanent: true }));
+    return [
+      ...legacy.map(([source, destination]) => ({ source, destination, permanent: true })),
+      // The old site's eBay link pointed at the shop's eBay store.
+      { source: "/Ebay", destination: "https://www.ebay.com/usr/blowoutwheels", permanent: true },
+    ];
   },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },
+      // Keep the *.vercel.app deployment out of search results; only the custom domain should be indexed.
+      { source: "/:path*", has: [{ type: "host", value: "(?<sub>.*)\\.vercel\\.app" }], headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
       { source: "/video/:path*", headers: [{ key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" }] },
       { source: "/media/:path*", headers: [{ key: "Cache-Control", value: "public, max-age=2592000, stale-while-revalidate=86400" }] },
     ];

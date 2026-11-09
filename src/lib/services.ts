@@ -42,7 +42,7 @@ export const services: ServicePage[] = [
     navLabel: "Wheel Repair",
     eyebrow: "Wheel Repair · Straightening · Welding",
     title: "Bent, cracked or curbed? We bring wheels back.",
-    metaTitle: "Wheel Repair & Bent Rim Straightening in Salt Lake City",
+    metaTitle: "Bent Rim & Wheel Repair in Salt Lake City",
     metaDescription:
       "Bent rim straightening, curb rash repair and cracked wheel welding at Wheel Werks in Salt Lake City. In-house equipment, serving the valley since 1986.",
     lede: "One replacement wheel can cost as much as a whole new set — if you can still find it. We can usually repair your damaged wheels for a fraction of that cost.",
@@ -92,9 +92,9 @@ export const services: ServicePage[] = [
     navLabel: "Refinishing & Powder Coating",
     eyebrow: "Refinishing · Powder Coating · Polishing",
     title: "Factory-fresh or completely yours.",
-    metaTitle: "Wheel Refinishing & Powder Coating in Salt Lake City, Utah",
+    metaTitle: "Wheel Refinishing & Powder Coating, Utah",
     metaDescription:
-      "In-house wheel powder coating, painting, polishing, machining and chrome plating in Salt Lake City. Thousands of colors, factory color matching and custom finishes.",
+      "In-house wheel powder coating, painting, polishing and machining in Salt Lake City. Thousands of colors, factory color matching and custom finishes.",
     lede: "Restore your wheels to the shine they had on day one — or create a look nobody else has. Powder coating, paint, polishing and machining, all done in-house.",
     heroImage: k("polished-chrome-wheel", "Polished multi-spoke wheel on a red car"),
     intro: [
@@ -145,7 +145,7 @@ export const services: ServicePage[] = [
     title: "The right wheel, fitted right.",
     metaTitle: "Custom Wheels & Fitment in Salt Lake City",
     metaDescription:
-      "Custom wheels, stock and custom fitment, and factory take-off wheels and tires at Wheel Werks in Salt Lake City. Get expert help choosing the right wheel and finish.",
+      "Custom wheels, stock and custom fitment, and factory take-off wheels and tires at Wheel Werks in Salt Lake City. Expert help choosing the right wheel.",
     lede: "We specialize in stock and custom wheel fitments and applications — new, used, or quality used OEM. Tell us what you drive and how you drive it.",
     heroImage: k("bronze-wheel", "Bronze multi-spoke wheel on a black performance car"),
     intro: [
@@ -195,7 +195,7 @@ export const services: ServicePage[] = [
     title: "Tires matched to how you drive.",
     metaTitle: "Tires & Tire Installation in Salt Lake City",
     metaDescription:
-      "Tire sales, installation, repair, rotation, computerized balancing, TPMS service and nitrogen inflation at Wheel Werks in Salt Lake City. Top brands, expert advice.",
+      "Tire sales, installation, repair, rotation, balancing, TPMS service and nitrogen at Wheel Werks in Salt Lake City. Top brands and honest advice.",
     lede: "Tires are the only connection between your vehicle and the road. We'll help you choose the right set for Utah weather and your budget — then install it properly.",
     heroImage: k("black-wheel-red-caliper", "Black performance wheel and tire with a red brake caliper"),
     intro: [
@@ -242,9 +242,9 @@ export const services: ServicePage[] = [
 
 export const extraServices = {
   slug: "services",
-  metaTitle: "Road Force Balancing, Tire Storage & More | Salt Lake City",
+  metaTitle: "Road Force Balancing & Tire Storage, Utah",
   metaDescription:
-    "Road Force balancing, hub-centric rings, seasonal tire storage, blasting and stripping, factory take-offs, TPMS and nitrogen inflation at Wheel Werks, Salt Lake City.",
+    "Road Force balancing, hub-centric rings, seasonal tire storage, blasting, factory take-offs, TPMS and nitrogen at Wheel Werks in Salt Lake City.",
   items: [
     {
       id: "road-force-balancing",

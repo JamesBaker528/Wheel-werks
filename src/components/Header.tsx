@@ -37,7 +37,7 @@ export function Header() {
       }`}
     >
       <div className="container-x flex h-[72px] items-center justify-between gap-6">
-        <Link href="/" aria-label="Wheel Werks — home" className="shrink-0">
+        <Link href="/" className="shrink-0">
           <Wordmark />
         </Link>
 

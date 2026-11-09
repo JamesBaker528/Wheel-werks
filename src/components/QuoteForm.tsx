@@ -6,7 +6,7 @@ import Script from "next/script";
 import { AnimatePresence, m } from "motion/react";
 import { ArrowLeft, ArrowRight, Camera, Check, CheckCircle2, Loader2, Phone, X, AlertTriangle } from "lucide-react";
 import { quoteServices } from "@/lib/content";
-import { needsBalance, needsFinish, needsRepair, needsTires, needsWheels, options, stepSchemas, UPLOAD } from "@/lib/quote";
+import { needsBalance, needsFinish, needsRepair, needsTires, needsWheels, options, stepKeys, stepSchemas, UPLOAD } from "@/lib/quote";
 import { site } from "@/lib/site";
 
 type Data = Record<string, string | string[] | boolean | undefined>;
@@ -22,8 +22,12 @@ const STEPS = [
 
 const TURNSTILE = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
-/** Downscale + re-encode photos in the browser so uploads are fast on mobile and fit server limits. EXIF (incl. GPS) is dropped. */
-async function compress(file: File): Promise<File> {
+/**
+ * Downscale + re-encode photos in the browser so uploads are fast on mobile and fit server limits.
+ * Re-encoding drops EXIF (incl. GPS). Returns null if the browser can't decode the file — we never
+ * upload an unprocessed original (the server also strips metadata as a second layer).
+ */
+async function compress(file: File): Promise<File | null> {
   try {
     const bmp = await createImageBitmap(file, { imageOrientation: "from-image" } as ImageBitmapOptions);
     const scale = Math.min(1, 1600 / Math.max(bmp.width, bmp.height));
@@ -32,10 +36,10 @@ async function compress(file: File): Promise<File> {
     c.height = Math.round(bmp.height * scale);
     c.getContext("2d")!.drawImage(bmp, 0, 0, c.width, c.height);
     const blob = await new Promise<Blob | null>((r) => c.toBlob(r, "image/jpeg", 0.82));
-    if (!blob) return file;
+    if (!blob) return null;
     return new File([blob], file.name.replace(/\.\w+$/, "") + ".jpg", { type: "image/jpeg" });
   } catch {
-    return file; // e.g. HEIC on browsers that can't decode it — server re-checks size/type
+    return null; // e.g. HEIC on browsers that can't decode it
   }
 }
 
@@ -55,8 +59,20 @@ export function QuoteForm() {
   const [photoMsg, setPhotoMsg] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "dev" | "error">("idle");
   const [serverMsg, setServerMsg] = useState("");
-  const startedAt = useRef(Date.now());
+  const formToken = useRef<string | null>(null);
+  const [enabled, setEnabled] = useState(true);
   const formRef = useRef<HTMLFormElement>(null);
+
+  // Signed, timestamped token from the server (replaces a client-side start time that bots could fake).
+  const loadToken = async () => {
+    try {
+      const r = await fetch("/api/quote/token", { cache: "no-store" });
+      const j = (await r.json()) as { token: string | null; enabled: boolean };
+      formToken.current = j.token;
+      setEnabled(j.enabled !== false);
+    } catch { formToken.current = null; }
+  };
+  useEffect(() => { loadToken(); }, []);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   const services = useMemo(() => (data.services as string[]) ?? [], [data.services]);
@@ -101,6 +117,7 @@ export function QuoteForm() {
     for (const f of picked) {
       if (!f.type.startsWith("image/") && !/\.(heic|heif)$/i.test(f.name)) { setPhotoMsg("Only image files can be attached."); continue; }
       const c = await compress(f);
+      if (!c) { setPhotoMsg(`"${f.name}" couldn't be read by your browser. Please choose a JPG or PNG, or take a screenshot of it.`); continue; }
       if (c.size > UPLOAD.maxFileBytes) { setPhotoMsg(`"${f.name}" is too large. Try a smaller photo or a screenshot.`); continue; }
       out.push({ id: crypto.randomUUID(), file: c, url: URL.createObjectURL(c) });
     }
@@ -121,7 +138,8 @@ export function QuoteForm() {
     setServerMsg("");
     const fd = new FormData();
     fd.set("data", JSON.stringify(data));
-    fd.set("started_at", String(startedAt.current));
+    if (!formToken.current) await loadToken();
+    fd.set("form_token", formToken.current ?? "");
     fd.set("company_website", (formRef.current?.elements.namedItem("company_website") as HTMLInputElement)?.value ?? "");
     const ts = formRef.current?.querySelector<HTMLInputElement>('[name="cf-turnstile-response"]')?.value;
     if (ts) fd.set("cf-turnstile-response", ts);
@@ -139,9 +157,10 @@ export function QuoteForm() {
         const e2: Errors = {};
         for (const i of j.issues as { path: string; message: string }[]) e2[i.path.split(".")[0]] = i.message;
         setErrors(e2);
-        const first = STEPS.findIndex((s) => Object.keys(stepSchemas[s.key].shape).some((k) => e2[k]));
+        const first = STEPS.findIndex((s) => stepKeys(s.key).some((k) => e2[k]));
         if (first >= 0) setStep(first);
       }
+      if (j.error === "expired") await loadToken();
       setServerMsg(j.message || `Something went wrong. Please call ${site.phone}.`);
       setStatus("error");
     } catch {
@@ -197,6 +216,13 @@ export function QuoteForm() {
   return (
     <form ref={formRef} onSubmit={submit} noValidate className="panel scroll-mt-24 overflow-hidden" aria-labelledby="quote-step-title">
       {TURNSTILE && <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="lazyOnload" />}
+
+      {!enabled && (
+        <div role="note" className="flex items-start gap-3 border-b border-signal/30 bg-signal/10 p-5 text-sm text-chrome sm:px-8">
+          <Phone className="mt-0.5 size-4 shrink-0 text-signal-hi" aria-hidden />
+          <p>Online quote requests are coming soon. For now, please call <a href={site.phoneHref} className="font-semibold underline underline-offset-2">{site.phone}</a> — you can still fill this out to plan what to ask.</p>
+        </div>
+      )}
 
       {/* Progress */}
       <div className="border-b border-white/[0.07] p-5 sm:p-8">
@@ -374,7 +400,7 @@ export function QuoteForm() {
 function Heading({ r, n, title, sub }: { r: React.RefObject<HTMLHeadingElement | null>; n: number; title: string; sub?: string }) {
   return (
     <div>
-      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-signal">Step {n} of 4</p>
+      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-signal-hi">Step {n} of 4</p>
       <h2 id="quote-step-title" ref={r} tabIndex={-1} className="mt-2 font-display text-3xl font-bold uppercase outline-none sm:text-4xl">{title}</h2>
       {sub && <p className="mt-1 text-sm text-mute">{sub}</p>}
     </div>

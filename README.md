@@ -30,14 +30,20 @@ Content research and the owner-confirmation checklist: **`docs/CONTENT-AUDIT.md`
 All old wheelwerks.net URLs (`/Services/...`, `/Automotive-Services/...`, `/Tires/...`, `/About/...`, `/Contact-Us/...`) 308-redirect to the new pages.
 
 ## Quote form — how delivery works
-The form will **not** pretend to work. Until email is configured the API returns `503 not_configured` and the visitor is told to call.
+The form will **not** pretend to work. It delivers email only when the email provider **and every abuse control** are configured; otherwise the form shows a "call us" notice and the API returns `503 not_configured`.
 
-1. Create a free [Resend](https://resend.com) account and verify the `wheelwerks.net` domain (DNS records).
-2. In Vercel → Project → Settings → Environment Variables set `RESEND_API_KEY`, `QUOTE_FROM_EMAIL`, `QUOTE_TO_EMAIL`.
-3. Recommended: add Upstash Redis (`UPSTASH_REDIS_REST_URL/TOKEN`) for shared rate limiting and Cloudflare Turnstile keys.
-4. Submit a test request from the live site and confirm the email (with photos) arrives.
+Required in Vercel → Project → Settings → Environment Variables (Production):
 
-Protections: same-origin check, 4.4 MB body cap, per-IP rate limit (5 / 10 min), honeypot + minimum fill time, optional Turnstile, Zod validation server-side, magic-byte image checks, server-generated attachment names, HTML-escaped email body. Photos are resized in the browser (strips EXIF/GPS) and are attached to the email only — never stored on the server.
+| Variable | Get it from |
+|---|---|
+| `RESEND_API_KEY`, `QUOTE_FROM_EMAIL`, `QUOTE_TO_EMAIL` | [Resend](https://resend.com) (free) — verify the `wheelwerks.net` domain first |
+| `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` | [Upstash](https://upstash.com) Redis (free) — shared rate limiting |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` | Cloudflare Turnstile (free) — add the site's domain(s) |
+| `QUOTE_SIGNING_SECRET` | already set |
+
+Redeploy, submit a test request from the live site and confirm the email (with photos) arrives.
+
+Protections: strict same-origin check (missing/`null` Origin rejected), body-size cap, per-IP rate limit (5 / 10 min, Vercel client IP, shared via Upstash, fails closed), honeypot, server-signed form token (≥ 4 s fill time, 2 h expiry), Turnstile, `zod/mini` validation on client and server, HTML-escaped email body. Photos are re-encoded in the browser **and** decoded + re-encoded server-side with sharp (removes EXIF/GPS, rejects non-images); they're attached to the email only — never stored.
 
 ## Deploy (Vercel)
 1. Import the GitHub repo in Vercel (framework auto-detected).

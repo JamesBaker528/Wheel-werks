@@ -4,7 +4,7 @@ import { Brands } from "@/components/Brands";
 import { pageMeta } from "@/lib/seo";
 
 const page = servicePage("custom-wheels");
-export const metadata = pageMeta({ title: page.metaTitle, description: page.metaDescription, path: "/custom-wheels", image: page.heroImage.src });
+export const metadata = pageMeta({ title: page.metaTitle, description: page.metaDescription, path: "/custom-wheels", image: "/og/custom-wheels.jpg" });
 
 export default function Page() {
   return (

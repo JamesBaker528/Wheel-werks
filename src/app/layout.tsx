@@ -18,7 +18,7 @@ const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Wheel Repair, Powder Coating & Tires in Salt Lake City | Wheel Werks",
+    default: "Wheel Repair & Powder Coating Salt Lake City | Wheel Werks",
     template: "%s | Wheel Werks",
   },
   description:

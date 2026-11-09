@@ -2,13 +2,29 @@ import "server-only";
 import type { QuoteData } from "@/lib/quote";
 import { quoteServices } from "@/lib/content";
 import type { CleanFile } from "./files";
+import { hasSharedLimiter } from "./rateLimit";
+import { hasSigningSecret } from "./token";
 
 const esc = (s: unknown) =>
   String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 
-export function isDeliveryConfigured() {
-  return Boolean(process.env.RESEND_API_KEY && process.env.QUOTE_TO_EMAIL && process.env.QUOTE_FROM_EMAIL);
+/**
+ * Email delivery is enabled only when the email provider AND every abuse control is configured:
+ * shared rate limiting (Upstash), bot verification (Turnstile) and the form-token signing secret.
+ * Anything missing → the API answers 503 and the visitor is asked to call.
+ */
+export function missingDeliveryConfig(): string[] {
+  const need: [string, boolean][] = [
+    ["RESEND_API_KEY", !!process.env.RESEND_API_KEY],
+    ["QUOTE_FROM_EMAIL", !!process.env.QUOTE_FROM_EMAIL],
+    ["QUOTE_TO_EMAIL", !!process.env.QUOTE_TO_EMAIL],
+    ["UPSTASH_REDIS_REST_URL / _TOKEN", hasSharedLimiter()],
+    ["TURNSTILE_SECRET_KEY + NEXT_PUBLIC_TURNSTILE_SITE_KEY", !!process.env.TURNSTILE_SECRET_KEY && !!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY],
+    ["QUOTE_SIGNING_SECRET", hasSigningSecret()],
+  ];
+  return need.filter(([, ok]) => !ok).map(([k]) => k);
 }
+export const isDeliveryConfigured = () => missingDeliveryConfig().length === 0;
 
 function rows(d: QuoteData): [string, string][] {
   const label = (id: string) => quoteServices.find((s) => s.id === id)?.label ?? id;

@@ -35,7 +35,7 @@ export const site = {
     yelp: "https://www.yelp.com/biz/wheel-werks-salt-lake-city-3",
     facebook: "https://www.facebook.com/WheelWerksUT/",
     instagram: "https://www.instagram.com/wheelwerksslc/",
-    ebay: "https://www.wheelwerks.net/ebay", // VERIFY: legacy link to the shop's eBay store
+    ebay: "https://www.ebay.com/usr/blowoutwheels", // from the old site's /Ebay page — VERIFY still active
   },
 } as const;
 

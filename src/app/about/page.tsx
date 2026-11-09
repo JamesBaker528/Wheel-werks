@@ -4,13 +4,15 @@ import { SectionHeading } from "@/components/Section";
 import { CtaBand } from "@/components/CtaBand";
 import { Reveal, Parallax } from "@/components/Motion";
 import { pageMeta } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 import { site, yearsInBusiness } from "@/lib/site";
 
 export const metadata = pageMeta({
   title: "About Wheel Werks — Family-Owned Since 1986",
-  description: "Wheel Werks Inc. was founded in Salt Lake City in 1986 by Mike Pruess. Learn about our apprenticeship-trained crew, in-house equipment and one-location shop on 3900 South.",
+  description: "Wheel Werks Inc. was founded in Salt Lake City in 1986 by Mike Pruess. Meet our apprenticeship-trained crew and our one-location shop on 3900 South.",
   path: "/about",
-  image: "/media/shop/storefront.jpg",
+  image: "/og/about.jpg",
 });
 
 const timeline = [
@@ -75,6 +77,7 @@ export default function AboutPage() {
         </div>
       </section>
       <CtaBand />
+      <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])} />
     </>
   );
 }

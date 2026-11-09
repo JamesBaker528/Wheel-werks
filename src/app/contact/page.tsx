@@ -7,7 +7,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata = pageMeta({
-  title: "Request a Quote — Wheel Repair, Powder Coating & Tires",
+  title: "Request a Quote — Wheel Repair & Tires",
   description: "Request a quote from Wheel Werks in Salt Lake City. Upload photos of wheel damage, tell us about your vehicle, or call (801) 268-4132. 123 East 3900 South.",
   path: "/contact",
 });

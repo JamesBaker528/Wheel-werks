@@ -35,7 +35,7 @@ export function ServicePageView({ page, extra }: { page: ServicePage; extra?: Re
       <section aria-labelledby="overview" className="py-20 sm:py-28">
         <div className="container-x grid items-center gap-14 lg:grid-cols-2">
           <div>
-            <SectionHeading eyebrow="Overview" title={page.metaTitle.replace(/ in Salt Lake City.*$/, "").replace(/ \|.*$/, "")} id="overview">
+            <SectionHeading eyebrow="Overview" title={page.metaTitle.replace(/( in Salt Lake City|, Utah).*$/, "").replace(/ \|.*$/, "")} id="overview">
               {page.intro.map((p) => <p key={p} className="mt-4 first:mt-0">{p}</p>)}
             </SectionHeading>
             <Reveal delay={0.1}>
@@ -62,7 +62,7 @@ export function ServicePageView({ page, extra }: { page: ServicePage; extra?: Re
           <ul className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.07] sm:grid-cols-2 lg:grid-cols-3">
             {page.features.map((f, i) => (
               <li key={f.title} id={slugify(f.title)} className="group scroll-mt-28 bg-carbon p-8 transition-colors hover:bg-graphite">
-                <span className="font-display text-sm font-semibold text-signal">{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-display text-sm font-semibold text-signal-hi">{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="mt-4 font-display text-2xl font-semibold uppercase">{f.title}</h3>
                 <p className="mt-2 leading-relaxed text-silver/75">{f.body}</p>
               </li>

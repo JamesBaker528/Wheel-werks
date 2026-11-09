@@ -6,6 +6,8 @@ import { CtaBand } from "@/components/CtaBand";
 import { Reveal } from "@/components/Motion";
 import { beforeAfter, gallery } from "@/lib/content";
 import { pageMeta } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 import { InstagramIcon } from "@/components/SocialIcons";
 import { RidesShowcase } from "@/components/RidesShowcase";
@@ -17,9 +19,10 @@ const allItems = [
 ];
 
 export const metadata = pageMeta({
-  title: "Gallery — Customer Rides, Wheel Repair & Powder Coating",
+  title: "Customer Rides & Wheel Work Gallery",
   description: "75+ customer rides photographed at Wheel Werks in Salt Lake City — custom wheels, finishes and fitment on cars, trucks and SUVs — plus our shop and showroom.",
   path: "/gallery",
+  image: "/og/gallery.jpg",
 });
 
 export default function GalleryPage() {
@@ -60,6 +63,7 @@ export default function GalleryPage() {
         </div>
       </section>
       <CtaBand title="Picture your wheels here." />
+      <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Gallery", path: "/gallery" }])} />
     </>
   );
 }

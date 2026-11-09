@@ -11,7 +11,7 @@ import { extraServices, services } from "@/lib/services";
 import { pageMeta } from "@/lib/seo";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
-export const metadata = pageMeta({ title: extraServices.metaTitle, description: extraServices.metaDescription, path: "/services" });
+export const metadata = pageMeta({ title: extraServices.metaTitle, description: extraServices.metaDescription, path: "/services", image: "/og/services.jpg" });
 
 export default function ServicesPage() {
   return (
